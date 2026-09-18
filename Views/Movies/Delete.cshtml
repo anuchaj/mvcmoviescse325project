@@ -1,0 +1,65 @@
+@model MvcMovie.Models.Movie
+
+@{
+    ViewData["Title"] = "Delete Movie";
+}
+
+<div class="delete-page">
+
+    <h1>Delete Movie</h1>
+
+    <div class="delete-warning">
+        <h2>Are you sure you want to delete this movie?</h2>
+
+        <p>
+            <strong>@Model.Title</strong>
+        </p>
+
+        <p>
+            This action cannot be undone.
+        </p>
+    </div>
+
+    <div class="movie-details">
+
+        <div class="detail-row">
+            <strong>Release Date</strong>
+            <span>@Model.ReleaseDate.ToString("MMMM d, yyyy")</span>
+        </div>
+
+        <div class="detail-row">
+            <strong>Genre</strong>
+            <span>@Model.Genre</span>
+        </div>
+
+        <div class="detail-row">
+            <strong>Price</strong>
+            <span>@Model.Price.ToString("C")</span>
+        </div>
+
+        <div class="detail-row">
+            <strong>Rating</strong>
+            <span>@Model.Rating</span>
+        </div>
+
+    </div>
+
+    <form asp-action="Delete" method="post">
+
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-actions">
+
+            <button type="submit" class="btn-danger">
+                Delete Movie
+            </button>
+
+            <a asp-action="Index" class="btn-secondary">
+                Cancel
+            </a>
+
+        </div>
+
+    </form>
+
+</div>

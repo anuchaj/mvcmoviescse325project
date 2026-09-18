@@ -1,31 +1,291 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #f8f9fa;
+    color: #212529;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.navbar-brand {
+    font-weight: 700;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.home-container {
+    max-width: 800px;
+    margin: 80px auto;
+    text-align: center;
+    padding: 40px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.home-container h1 {
+    margin-bottom: 20px;
+}
+
+.home-container p {
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+.movies-page,
+.form-page,
+.details-page,
+.delete-page {
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    margin-bottom: 0;
+    color: #666;
+}
+
+/*
+    Assignment requirement:
+    Add padding to form controls so text does not touch
+    the borders.
+*/
+input,
+select,
+textarea {
+    padding: 0.65rem 0.8rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #6c757d;
+    box-shadow: 0 0 0 2px rgba(108, 117, 125, 0.15);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+}
+
+.search-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 25px;
+    margin-bottom: 35px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.search-form .form-group {
+    margin-bottom: 0;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+    display: inline-block;
+    padding: 0.65rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5c636a;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #bb2d3b;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.movie-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.movie-card-content {
+    padding: 25px;
+}
+
+.movie-card h2 {
+    margin-bottom: 18px;
+    font-size: 1.4rem;
+}
+
+.movie-card p {
+    margin-bottom: 10px;
+}
+
+.movie-actions {
+    display: flex;
+    gap: 15px;
+    padding: 15px 25px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eee;
+}
+
+.movie-actions a {
+    text-decoration: none;
+}
+
+.delete-link {
+    color: #dc3545;
+}
+
+.no-results {
+    text-align: center;
+    padding: 50px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.form-page,
+.details-page,
+.delete-page {
+    background-color: white;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.form-page form {
+    max-width: 700px;
+}
+
+.validation-summary,
+.validation-error {
+    color: #dc3545;
+}
+
+.validation-summary {
+    margin-bottom: 20px;
+}
+
+.delete-warning {
+    padding: 20px;
+    margin: 25px 0;
+    background-color: #fff3cd;
+    border: 1px solid #ffecb5;
+    border-radius: 8px;
+}
+
+.movie-details {
+    margin-top: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+@media (max-width: 700px) {
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-form .form-group {
+        width: 100%;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        gap: 5px;
+    }
 }

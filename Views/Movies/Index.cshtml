@@ -1,0 +1,132 @@
+@model IEnumerable<MvcMovie.Models.Movie>
+
+@{
+    ViewData["Title"] = "My Movies";
+
+    var selectedYear = ViewData["SelectedYear"] as int?;
+    var searchString = ViewData["SearchString"] as string;
+}
+
+<div class="movies-page">
+
+    <div class="page-header">
+        <div>
+            <h1>My Movies</h1>
+            <p>Browse, search, and manage my movie collection.</p>
+        </div>
+
+        <a class="btn-primary" asp-action="Create">
+            Add Movie
+        </a>
+    </div>
+
+    <form asp-controller="Movies" asp-action="Index" method="get" class="search-form">
+
+        <div class="form-group">
+            <label for="searchString">Search by title</label>
+            <input type="text" id="searchString" name="searchString" value="@searchString"
+                   placeholder="Enter a movie title..." />
+        </div>
+
+        <div class="form-group">
+            <label for="year">Year or newer</label>
+
+            <select id="year" name="year">
+                <option value="">All Years</option>
+
+                @for (int year = DateTime.Now.Year; year >= 1950; year--)
+                {
+                    if (selectedYear == year)
+                    {
+                        <option value="@year" selected>
+                            @year
+                        </option>
+                    }
+                    else
+                    {
+                        <option value="@year">
+                            @year
+                        </option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">
+                Search
+            </button>
+
+            <a asp-action="Index" class="btn-secondary">
+                Clear
+            </a>
+        </div>
+    </form>
+
+    @if (!Model.Any())
+    {
+        <div class="no-results">
+            <h2>No movies found</h2>
+            <p>Try changing your search or year filter.</p>
+        </div>
+    }
+    else
+    {
+        <div class="movie-grid">
+
+            @foreach (var movie in Model)
+            {
+                <article class="movie-card">
+
+                    <div class="movie-card-content">
+
+                        <h2>@movie.Title</h2>
+
+                        <p>
+                            <strong>Release Date:</strong>
+                            @movie.ReleaseDate.ToString("MMMM d, yyyy")
+                        </p>
+
+                        <p>
+                            <strong>Genre:</strong>
+                            @movie.Genre
+                        </p>
+
+                        <p>
+                            <strong>Price:</strong>
+                            @movie.Price.ToString("C")
+                        </p>
+
+                        @if (!string.IsNullOrWhiteSpace(movie.Rating))
+                        {
+                            <p>
+                                <strong>Rating:</strong>
+                                @movie.Rating
+                            </p>
+                        }
+
+                    </div>
+
+                    <div class="movie-actions">
+
+                        <a asp-action="Details" asp-route-id="@movie.Id">
+                            Details
+                        </a>
+
+                        <a asp-action="Edit" asp-route-id="@movie.Id">
+                            Edit
+                        </a>
+
+                        <a asp-action="Delete" asp-route-id="@movie.Id" class="delete-link">
+                            Delete
+                        </a>
+
+                    </div>
+
+                </article>
+            }
+
+        </div>
+    }
+
+</div>

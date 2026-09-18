@@ -1,0 +1,47 @@
+@model MvcMovie.Models.Movie
+
+@{
+    ViewData["Title"] = "Movie Details";
+}
+
+<div class="details-page">
+
+    <h1>@Model.Title</h1>
+
+    <div class="movie-details">
+
+        <div class="detail-row">
+            <strong>Release Date</strong>
+            <span>@Model.ReleaseDate.ToString("MMMM d, yyyy")</span>
+        </div>
+
+        <div class="detail-row">
+            <strong>Genre</strong>
+            <span>@Model.Genre</span>
+        </div>
+
+        <div class="detail-row">
+            <strong>Price</strong>
+            <span>@Model.Price.ToString("C")</span>
+        </div>
+
+        <div class="detail-row">
+            <strong>Rating</strong>
+            <span>@Model.Rating</span>
+        </div>
+
+    </div>
+
+    <div class="form-actions">
+
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-primary">
+            Edit
+        </a>
+
+        <a asp-action="Index" class="btn-secondary">
+            Back to My Movies
+        </a>
+
+    </div>
+
+</div>
